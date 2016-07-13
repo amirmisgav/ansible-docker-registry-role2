@@ -3,3 +3,12 @@
     - install_docker_environment
     - deploy_docker_registry
 
+
+
+---
+- hosts: all
+  become: yes
+  become_user: root
+
+  roles:
+    - { role: ., }

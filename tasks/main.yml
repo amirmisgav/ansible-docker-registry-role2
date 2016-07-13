@@ -1,0 +1,14 @@
+---
+
+- name: Validate OS is Ubuntu
+  fail: msg="Not Ubuntu OS. Environment Installation Aboart"
+  when: ansible_distribution != "Ubuntu"
+
+- include_vars: main.yml
+
+- include: install_docker.yml
+#- include: install_docker-compose.yml
+#- include: install_shipyard.yml
+- include: deploy_registry_server.yml
+
+
