@@ -35,13 +35,13 @@ Vagrant.configure(2) do |config|
             ansible.sudo_user = "root"
             ansible.host_key_checking = "false"
             ansible.verbose = "#{ansible_verbosity}"
-            ansible.extra_vars = {
-              some_var: "some_value",
-              dict: {
-                kay1: "val1",
-                kay2: "val2"
-              }
-            }
+            # ansible.extra_vars = {
+            #   some_var: "some_value",
+            #   dict: {
+            #     key1: "val1",
+            #     key2: "val2"
+            #   }
+            # }s
         end
       end
     end
