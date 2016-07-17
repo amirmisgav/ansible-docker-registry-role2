@@ -4,18 +4,11 @@
 Vagrant.configure(2) do |config|
     ansible_verbosity='-v'
     machines = [
-      #{
-      #  :name => "centos7",
-      #  :box => "centos/7"
-      #},
-      #{
-      #  :name => "centos6",
-      #  :box => "geerlingguy/centos6"
-      #},
-      #{
-      #  :name => "ubuntu1604",
-      #  :box => "bento/ubuntu-16.04"
-      #},
+      {
+        :name => "ubuntu1604",
+        :box => "bento/ubuntu-16.04",
+        :ip => "192.168.50.3"
+      },
       {
         :name => "ubuntu1404",
         :box => "ubuntu/trusty64",
