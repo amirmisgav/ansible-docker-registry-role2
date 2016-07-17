@@ -48,12 +48,15 @@
 - file: path=/etc/default/docker state=touch
 
 - name: configure proxy to docker
-  lineinfile: dest=/etc/default/docker regexp="^export http_proxy=" line="export http_proxy={{http_proxy_}}/"
+  lineinfile: dest=/etc/default/docker regexp="^export http_proxy=" line="export http_proxy={{http_proxy}}/"
+  when: http_proxy is defined
 
 - name: configure proxy ssl to docker
-  lineinfile: dest=/etc/default/docker regexp="^export https_proxy=" line="export https_proxy={{http_proxy_}}/"
+  lineinfile: dest=/etc/default/docker regexp="^export https_proxy=" line="export https_proxy={{http_proxy}}/"
+  when: http_proxy is defined
 
 - name: configure proxy ssl to docker
   lineinfile: dest=/etc/default/docker regexp=^DOCKER_OPTS= line=DOCKER_OPTS="--insecure-registry {{ansible_hostname}}.{{ansible_domain}}:5000"
+  when: http_proxy is defined
 
 - service: name=docker state=restarted
